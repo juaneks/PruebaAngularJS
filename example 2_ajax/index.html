@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html  lang="es"  ng-app="App2">
+	<head>
+		<meta charset="UTF-8">
+		<title>Prueba angular con ajax</title>
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="main2.js"></script>
+	</head>
+	<body>
+		<div ng-controller="FirstController">
+			<input type="text" ng-model="campo">
+			<h3>{{campo}}</h3>
+		<!--	<button ng-click="consumir()">Consumir API</button> -->
+			<hr>
+			<label>Usuario :<input type="text" ng-model="newPost.userId"></label>
+			<label>Titulo :<input type="text" ng-model="newPost.title"></label>
+			<label>Cuerpo :<textarea  ng-model="newPost.body"></textarea> </label>
+			<button ng-click="addPost()">enviar por Post</button>
+			<ul>
+				<li ng-repeat="item in registros">
+					<h3>{{item.title}}</h3>
+					<span>{{item.body}}</span>
+					<picture>
+					<source srcset="smaller.jpg" media="(max-width: 768px)">
+					<source srcset="{{item.thumbnailUrl}}">
+					<img src="{{item.thumbnailUrl}}">
+					</picture>
+					
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

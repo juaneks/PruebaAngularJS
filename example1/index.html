@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="todoApp">
+	<head>
+		<meta charset="UTF-8">
+		<title>Prueba 1 con AngularJS</title>
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<style type="text/css">
+			.divs{
+				margin: 30px 30px;
+				color:#232323;
+			}
+			.done-true {
+			text-decoration: line-through;
+			color: grey;
+			}
+			body{ padding-bottom: 40px;}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h2 style="text-align:center;">Prueba  AngularJS</h2>
+			<label for="">Nombre :</label>
+			<input type ="text" ng-model="nombre" placeholder="ingresa tu nombre">
+			
+			<h3>Hola {{nombre}}</h3>
+			<h4>como estas? {{nombre}}<h4>
+			<input type="text" value="{{nombre}}">
+		</div>
+		<hr>
+		<div  class="divs">
+			<div ng-controller="TodoController">
+				<span>libres {{remaining()}} de {{todos.length}} archivos</span>
+				[ <a href="" ng-click="archive()">eliminar</a> ]
+				<ul class="unstyled">
+					<li ng-repeat="todo in todos">
+						<input type="checkbox" ng-model="todo.done">
+						<span class="done-{{todo.done}}">{{todo.text}}</span>
+					</li>
+				</ul>
+				<!-- <form ng-submit="addTodo()">
+														<input type="text" ng-model="todoText"  size="30"
+														placeholder="agrea un nuevo item">
+														<input class="btn-primary" type="submit" value="add">
+				</form>-->
+				
+				<input type="text" ng-model="todoText"  size="30"
+				placeholder="agrega un nuevo item">
+				<input class="btn-primary" type="button" ng-click="addTodo()" value="add">
+				
+			</div>
+		</div>
+		<hr>
+		<div ng-init="count = 0">
+			<button ng-click="count = count + 1">has click</button>
+			<h3>Cada click aumenta en 2 en 2 : {{ 2 * count }}</h3>
+			<hr>
+			<div ng-controller="segundoController">
+				<input type="text" ng-model="nuevoitem" >
+				<button ng-click="agregar()">Nuevo</button>
+				<select ng-change="seleccion()" ng-options="item.code as item.name for item in opciones" ng-model="ciudad">
+					<option  style="display:none" value="">selecione una ciudad</option>
+				</select>
+				<br>
+				<label> item seleccionado es : {{ciudad}}</label>
+				
+				<hr>
+				
+				<input type="text" ng-model="NuevoUsuario.nombres">
+				<input type="text" ng-model="NuevoUsuario.apellidos">
+				<button ng-click="addUser()">add</button>
+				<h5>
+				<ul>
+					<li ng-repeat=" usuario in Usuarios">
+						<span>{{usuario.nombres}}  <b>{{usuario.apellidos}} </b> </span>
+					</li>
+				</ul>
+				</h5>
+			</div>
+		</div>
+	</body>
+</html>

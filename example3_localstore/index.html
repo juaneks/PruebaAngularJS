@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html  lang="es" ng-app="ToDoList">
+	<head>
+		<meta charset="UTF-8">
+		<title>Prueba angular con localstore</title>
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="angular-local-storage.min.js"></script>
+		<script type="text/javascript" src="controller.js"></script>
+	</head>
+	<body>
+		<div ng-controller="ToDoController">
+			<ul>
+				<li ng-repeat="actividad in todo">
+					{{actividad.descripcion}} <b>-</b> {{actividad.fecha | date: 'short'}} <!-- | es para filter de angular-->
+				</li>
+			</ul>
+			<form ng-submit="addActv()">
+				<input type="text" ng-model="NewActividad.descripcion">
+				<input type="datetime-local" ng-model="NewActividad.fecha">
+				<input type="submit" value="enviar">
+				<button ng-click="todo = []">Limpiar</button>
+			</form>
+		</div>
+	</body>
+</html>
